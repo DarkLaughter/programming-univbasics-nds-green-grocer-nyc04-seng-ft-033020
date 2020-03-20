@@ -110,7 +110,18 @@ itemized_cart = consolidate_cart(cart)
 itemized_cart_w_coupons = apply_coupons(itemized_cart, coupons)
 final_cart = apply_clearance(itemized_cart_w_coupons)
 
+total = 0
+ i = 0
+ while i < final_cart.size do
+     grocery_item = final_cart[i]
+     grocery_price = grocery_item[:price]
+     item_count = grocery_item[:count]
 
+    total += grocery_price * item_count
+ i += 1
+ end
+
+ total.round(2)
 
 
 end
