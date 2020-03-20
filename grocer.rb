@@ -51,7 +51,7 @@ updated_cart = []
     name = cart[i][:item]
     items_w_coupons = find_item_by_name_in_collection(coupon[:item], coupons)
 
-      if items_w_coupons
+      if items_w_coupons[:name] == cart[i][:name]
         updated_cart << {:item => "#{cart[i][:item]} W/COUPON",
                 :price => items_w_coupons[:price]/items_w_coupons[:num],
                 :clearance => cart[i][:clearance],
