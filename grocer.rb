@@ -43,24 +43,27 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-i = 0
-update_cart = []
+  i = 0
+  update_cart = []
 
-  while i < cart.size do
-    item = cart[i][:item]
-    coupon_item = find_item_by_name_in_collection(item, coupons)
+    while i < cart.size do
+      item = cart[i][:item]
+      coupon_item = find_item_by_name_in_collection(item, coupons)
 
-      if item == coupon_item[:item]
-        update_cart << ({:item => "#{coupon_item[:item]} W/COUPON",
+        if coupon_item
+            cart[i][:count] = (cart[i][:count] - coupon_item[:num])
+
+            update_cart << cart[i]
+            update_cart << {:item => "#{coupon_item[:item]} W/COUPON",
                         :price => coupon_item[:cost]/coupon_item[:num].round(2),
                         :clearance => cart[i][:clearance],
-                        :count => (cart[i][:count] - coupon_item[:num])}
-                        #cart[i][:count] = (cart[i][:count] % coupon_item[:num]))
-      else
-        update_cart cart[i]
-      end
-    i+= 1
-  end
+                        :count => (coupon_item[:num])}
+
+        else
+            update_cart << cart[i]
+        end
+      i+= 1
+    end
 
 update_cart
 end
