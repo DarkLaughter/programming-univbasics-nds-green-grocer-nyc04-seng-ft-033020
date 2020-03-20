@@ -109,5 +109,8 @@ def checkout(cart, coupons)
 itemized_cart = consolidate_cart(cart)
 itemized_cart_w_coupons = (itemized_cart, coupons)
 final_cart = (itemized_cart_w_coupons)
-  puts itemized_cart_w_coupons
+
+
+
+
 end
