@@ -107,8 +107,8 @@ def checkout(cart, coupons)
   # some irritated customers
 
 itemized_cart = consolidate_cart(cart)
-itemized_cart_w_coupons = (itemized_cart, coupons)
-final_cart = (itemized_cart_w_coupons)
+itemized_cart_w_coupons = apply_coupons(itemized_cart, coupons)
+final_cart = apply_clearance(itemized_cart_w_coupons)
 
 
 
