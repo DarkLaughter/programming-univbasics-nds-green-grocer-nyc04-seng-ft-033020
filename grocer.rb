@@ -112,16 +112,20 @@ final_cart = apply_clearance(itemized_cart_w_coupons)
 
 total = 0
  i = 0
- while i < final_cart.size do
-     grocery_item = final_cart[i]
-     grocery_price = grocery_item[:price]
-     item_count = grocery_item[:count]
+   while i < final_cart.size do
+       grocery_item = final_cart[i]
+       grocery_price = grocery_item[:price]
+       item_count = grocery_item[:count]
 
-    total += grocery_price * item_count
- i += 1
- end
+      total += grocery_price * item_count
+   i += 1
+   end
 
  total.round(2)
 
+    if total > 100
+      total = total * 0.9
+    end
 
+  total.round(2)
 end
