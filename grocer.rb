@@ -54,7 +54,7 @@ update_cart = []
         update_cart << ({:item => "#{coupon_item[:item]} W/COUPON",
                         :price => coupon_item[:cost]/coupon_item[:num].round(2),
                         :clearance => cart[i][:clearance],
-                        :count => cart[i][:count] - coupon_item[:num]},
+                        :count => (cart[i][:count] - coupon_item[:num])},
                         cart[i][:count] = (cart[i][:count] % coupon_item[:num]))
       else
         update_cart cart[i]
